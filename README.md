@@ -15,3 +15,8 @@ This is a simple website built with Koa and Tailwind CSS where you can suggest a
 
 This project is a simple way of building a website where users can submit suggestions.
 
+## How it looks like
+
+![Screenshot of the website](./public/images/preview.png)
+
+
