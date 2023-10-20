@@ -1,0 +1,23 @@
+{
+  "name": "suggest-project",
+  "version": "1.0.0",
+  "description": "A simple website built with Koa and Tailwind CSS where you can suggest a project.",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start index.js --watch",
+    "stop": "pm2 stop index.js",
+    "dev": "npx tailwindcss -i ./public/styles/tailwind.css -o ./public/styles/src.css --watch"
+  },
+  "author": "Kairy",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "koa": "^2.14.2",
+    "koa-bodyparser": "^4.4.1",
+    "koa-ejs": "^4.3.0",
+    "koa-router": "^11.0.2",
+    "koa-static": "^5.0.0",
+    "koa-views": "^8.1.0",
+    "tailwindcss": "^3.3.3"
+  }
+}

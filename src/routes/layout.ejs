@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Suggest Project</title>
+  <link href="/styles/src.css" rel="stylesheet">
+</head>
+<body>
+  <%- body %>
+
+  <script>
+    const suggestionInput = document.getElementById('suggestion');
+    const submitButton = document.querySelector('button');
+    const container = document.querySelector('.container');
+    const defaultContainerHeight = 300; // Default height of the container
+    const increaseHeightBy = 40; // Amount to increase the container height
+
+    suggestionInput.addEventListener('input', () => {
+      submitButton.classList.toggle('hidden', suggestionInput.value.trim() === '');
+
+      const words = suggestionInput.value.trim().split(' ');
+      const totalLetters = words.reduce((count, word) => count + word.length, 0);
+      console.log(totalLetters)
+
+      if (totalLetters >= 20) {
+        suggestionInput.style.height = suggestionInput.scrollHeight + 'px'; // Set the height to fit the content
+
+        const additionalHeight = Math.ceil((totalLetters - 20) / 20) * increaseHeightBy;
+        const newContainerHeight = defaultContainerHeight + additionalHeight;
+        container.style.height = newContainerHeight + 'px';
+      } else {
+        suggestionInput.style.height = ''; // Reset the height to default
+        container.style.height = defaultContainerHeight + 'px'; // Set the container height to default
+      }
+    });
+
+    document.querySelector('.animate-button').addEventListener('click', async () => {
+      const suggestion = document.querySelector('#suggestion').value;
+
+      const submittedText = document.createElement('span');
+      submittedText.textContent = 'Submitted!';
+      submittedText.style.color = 'white';
+      submittedText.classList.add('fade-in');
+
+      const suggestionInput = document.querySelector('#suggestion');
+      suggestionInput.parentNode.replaceChild(submittedText, suggestionInput);
+
+      const animateButton = document.querySelector('.animate-button');
+      animateButton.classList.add('fade-out');
+      animateButton.addEventListener('animationend', () => {
+        animateButton.style.display = 'none';
+      });
+
+      try {
+        const response = await fetch('/api/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ suggestion })
+        });
+
+        if (response.ok) {
+          console.log('Form submitted successfully');
+        } else {
+          console.error('Form submission failed');
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>
