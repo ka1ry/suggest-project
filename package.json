@@ -9,6 +9,18 @@
     "dev": "npx tailwindcss -i ./public/styles/tailwind.css -o ./public/styles/src.css --watch",
     "production": "node index.js"
   },
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "index.js"
+    }
+  ],
   "author": "Kairy",
   "license": "ISC",
   "dependencies": {
