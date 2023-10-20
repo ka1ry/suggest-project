@@ -6,21 +6,8 @@
   "scripts": {
     "start": "pm2 start index.js --watch",
     "stop": "pm2 stop index.js",
-    "dev": "npx tailwindcss -i ./public/styles/tailwind.css -o ./public/styles/src.css --watch",
-    "production": "node index.js"
+    "dev": "npx tailwindcss -i ./public/styles/tailwind.css -o ./public/styles/src.css --watch"
   },
-  "builds": [
-    {
-      "src": "index.js",
-      "use": "@now/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "index.js"
-    }
-  ],
   "author": "Kairy",
   "license": "ISC",
   "dependencies": {
