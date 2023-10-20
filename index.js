@@ -95,4 +95,4 @@ fs.readdirSync(__dirname + '/src/routes').forEach(function(name) {
 // Use routes
 app.use(router.routes()).use(router.allowedMethods());
 
-app.listen(1982, () => console.log('Server running on port https://localhost:1982'));
+app.listen(8080, () => console.log('Server running on port https://localhost:1982'));

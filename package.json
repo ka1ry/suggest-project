@@ -6,7 +6,8 @@
   "scripts": {
     "start": "pm2 start index.js --watch",
     "stop": "pm2 stop index.js",
-    "dev": "npx tailwindcss -i ./public/styles/tailwind.css -o ./public/styles/src.css --watch"
+    "dev": "npx tailwindcss -i ./public/styles/tailwind.css -o ./public/styles/src.css --watch",
+    "production": "node index.js"
   },
   "author": "Kairy",
   "license": "ISC",
